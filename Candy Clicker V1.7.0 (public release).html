@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link type="image/x-icon" href="https://res.cloudinary.com/dhpahuvxs/image/upload/v1772772547/OIP_vyllgh.ico?v=2" rel="shortcut icon">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <audio id="clickSound" src="https://res.cloudinary.com/dhpahuvxs/video/upload/v1772669460/0304_pj83br.mp3"></audio>
+  <audio id="buttonsound" src="https://res.cloudinary.com/dhpahuvxs/video/upload/v1772766629/denielcz-immersivecontrol-button-click-sound-463065_xhjevt.mp3"></audio>
+  <title>IXL | Math, Language Arts, Science, Social Studies, and Spanish
+</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      text-align: center; 
+      background-image: url('https://res.cloudinary.com/dhpahuvxs/image/upload/v1772660770/Background_hslcrq.png');
+      background-attachment: fixed;
+      background-size: cover;
+      color: white;
+    }
+    #main-button {
+      width: 400px;
+      height: 400px;
+      cursor: pointer;
+      border-radius: 50%;
+      box-shadow: 3px 3px 15px rgba(0,0,0,0.5);
+      margin-top: 20px;
+      background-image: url("https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666189/Base111_yesdlp.png");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: none;
+      transition: transform 0.1s;
+    }
+    #main-button:active {
+      transform: scale(0.95);
+    }
+    .change-log-txt {
+      font-weight: bold; 
+      font-size: 25px; 
+      margin: 10px 0;
+      color: #000000
+    }
+    .display-text {
+      font-weight: bold; 
+      font-size: 25px; 
+      margin: 0px 0;
+      text-shadow: 2px 2px 4px #000;
+    }
+    .note-text {
+      font-weight: bold; 
+      font-size: 21px;
+      line-height: 0;
+      text-shadow: 2px 2px 4px #000;
+    }
+    .warning {
+      color: rgb(0, 0, 0);
+      font-size: 25x;
+      text-shadow: 2px 2px 4px #ff0000;}
+    .upgrade {
+      margin: 10px auto;
+      padding: 15px;
+      font-size: 24px;
+      border-radius: 20px;
+      border: 2px solid #444;
+      background-color: #2c012c;
+      cursor: pointer;
+      color: #fff;
+      font-weight: bold;
+      width: 80%;
+      max-width: 800px;
+      display: block;
+    }
+    .shop {
+      margin: 10px auto;
+      padding: 15px;
+      font-size: 24px;
+      border-radius: 20px;
+      border: 2px solid #444;
+      background-color: #fffb00;
+      cursor: pointer;
+      color: #000000;
+      font-weight: bold;
+      width: 80%;
+      max-width: 800px;
+      display: block;
+    }
+    .upgrade:hover {
+      background-color: #4a024a;
+    }
+    .upgrade:disabled {
+      background-color: #1a1a1a;
+      color: #666;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+<h1 style="
+  font-size: 100px; 
+  margin-bottom: 20px;
+  margin-top: 2px;
+  background: linear-gradient(to right, #00bfff, #ff00a2); 
+  -webkit-background-clip: text; 
+  background-clip: text; 
+  color: transparent;
+  filter: drop-shadow(2px 2px 2px rgb(255, 255, 255));
+  font-family: 'Pacifico', cursive;
+">
+  Candy Clicker
+</h1>
+
+  <div id="score" class="display-text">Candies: 0</div>
+  <div id="CPSDisplay" class="display-text">Candy Per Second: 0</div>
+
+  <button id="main-button"></button>
+
+  <h5 class="warning">"Made by Deathrow <3"</h5>
+
+  <h2>⬇️ Upgrades ⬇️</h2>
+
+  <div id="upgrade-container">
+    <button class="upgrade" id="upgrade1">Upgrade Cursor (Cost: 20)<p>+1 Candy Per Click</p></button>
+    <button class="upgrade" id="upgrade2">Buy 1 Confectioner (Cost: 20)</button>
+    <button class="upgrade" id="upgrade3">Buy 1 Professional Candy Crafter (Cost: 20)</button>
+    <button class="upgrade" id="upgrade4">Buy 1 Candy Farm (Cost: 20)</button>
+    <button class="upgrade" id="upgrade5">Buy 1 Candy Master (Cost: 20)</button>
+    <button class="upgrade" id="upgrade6">Buy 1 Candy Summoner (Cost: 20)</button>
+    <button class="upgrade" id="upgrade7">Buy 1 Candy Clonner (Cost: 20)</button>
+    <button class="upgrade" id="upgrade8">Buy 1 Candy Portal (Cost: 20)</button>
+    <button class="upgrade" id="upgrade9">Buy 1 Candy Universe (Cost: 20)</button>
+    <button class="upgrade" id="upgrade10">Buy 1 Dark Matter Candy Summoner (Cost: 20)</button>
+    <button class="upgrade" id="upgrade11">Buy 1 Enhanced Dark Matter Candy Cloner (Cost: 20)</button>
+    <button class="upgrade" id="upgrade12">Buy 1 Artificial Candy Crafter (Cost: 20)</button>
+      <button class="shop" id="shop">Unlock Shop (Cost: 1,000,000)</button>
+  </div>
+
+    <div id="nav-menu" style="display:none; margin-top:20px;">
+      <button class="shop" onclick="showTab('enhancement-container')">Enhancements</button>
+      <button class="shop" onclick="showTab('upgrade-container')">Upgrades</button>
+    </div>
+
+    <div id="enhancement-container" style="display:none;">
+      <h2>Enhancements Shop</h2>
+      <button class="shop" id="upgrade13">Upgrade Your Candy (Cost: 100,000)</button>
+      <button class="shop" id="enhance2xCPS">2x Candy Per Second (Cost: 25,000,000)</button>
+      <button class="shop" id="enhance4xCPS">4x Candy Per Second (Cost: 100,000,000)</button>
+      <button class="shop" id="enhance2xCPC">2x Candy Per Click (Cost: 5,000,000)</button>
+      <button class="shop" id="enhance5xCPC">5x Candy Per Click (Cost: 75,000,000)</button>
+      <button class="shop" id="enhanceAutoClicker">Basic Auto Clicker™ (Cost: 1,000,000)</button>
+      <button class="shop" id="enhanceAdvancedAutoClicker">Advanced Auto Clicker™ (Cost: 50,000,000)</button>
+      <button class="shop" id="enhanceUltimateAutoClicker"> Ultimate Auto Clicker™ (Cost: 250,000,000)</button>
+
+
+      <!-- Add more enhancement upgrades here -->
+    </div>
+
+<div class="note-text">
+  <h6>Change Log link: <a href="https://docs.google.com/document/d/1LzOTlx67336ZLZzM_sG7VNfMKKS5beCm3GjCwjW28ps/edit?usp=sharing" target="_blank">Change logs</a></h6>
+  <h6>Suggestion form: <a href="https://forms.gle/PGdNG6Gu2BTQkbXA7" target="_blank">Suggestion form</a></h6>
+  <h6>Github: <a href="https://github.com/Deathrow11/CandyClicker" target="_blank">Github/Deathrow11/Candyclicker</a></h6>
+  <h6>MIT License Copyright (c) 2026 Deathrow11</h6></h6MIT>
+  <button onclick="toggleSound()">Toggle Sound</button>
+  <button onclick="saveProgress()">Force Save</button>
+  <h2>Cheat Console</h2>
+  <input type="text" id="consoleInput" placeholder="Type command here">
+  <button onclick="runCommand()">Run</button>
+  <h6 class="warning">Note: Using the cheat console will clear your saved data and prevent you from saving in the future, use at your own risk aka if u dont know html dont use it
+
+</div>
+<script>
+// Reset progress if cheat flag is set
+if (localStorage.getItem("cheatedFlag") === "true") {
+  localStorage.clear();
+  alert("Cheat detected! Progress has been reset.");
+}
+let Candy = parseInt(localStorage.getItem("Candy")) || 0;
+// Keyboard shortcut: pressing 1-9 triggers main button
+document.addEventListener("keydown", function(e) {
+  if (e.key >= "1" && e.key <= "9") {
+    mainButton.click();
+  }
+});
+let CandyPerClick = parseInt(localStorage.getItem("CandyPerClick")) || 1;
+let CandyPerSecond = parseInt(localStorage.getItem("CandyPerSecond")) || 0;
+let CandyMultiplier = parseFloat(localStorage.getItem("CandyMultiplier")) || 1;
+let CPSMultiplier = parseFloat(localStorage.getItem("CPSMultiplier")) || 1;
+let soundEnabled = localStorage.getItem("soundEnabled") !== "false";
+const clickSound = document.getElementById("clickSound");
+clickSound.volume = 0.3;
+const candyImagesByBG = [
+  [ // Pink and Blue
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666189/baser_rt6tjn.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666189/Base111_yesdlp.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666188/Base_ln9pwj.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666188/2Base_kg07rj.png"
+  ],
+  [ // Green and Yellow
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666647/Base_green_and_yellow_xez9ts.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666649/images-removebg-preview_pdunev.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666654/baser12312321_gutff6.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666647/2Base_wwakcj.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666189/baser_rt6tjn.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666189/Base111_yesdlp.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666188/Base_ln9pwj.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666188/2Base_kg07rj.png"
+  ],
+  [ // Red and Blue
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666760/Base_red_and_blue_uksst4.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666760/Base_red_and_blue_uksst4.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666759/images-removebg-preview1231231_m6xykj.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666755/2_ilitoy.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666647/Base_green_and_yellow_xez9ts.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666649/images-removebg-preview_pdunev.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666654/baser12312321_gutff6.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666647/2Base_wwakcj.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666189/baser_rt6tjn.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666189/Base111_yesdlp.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666188/Base_ln9pwj.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666188/2Base_kg07rj.png",
+  ],
+  [ // Red and Orange
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668129/Base_Red_and_Orange_msz4h7.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668131/baser1231232112312321313121231_bg7xok.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668132/images-removebg-preview12312312312123123_lsrk90.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668129/332_udmefe.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666760/Base_red_and_blue_uksst4.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666760/Base_red_and_blue_uksst4.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666759/images-removebg-preview1231231_m6xykj.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666755/2_ilitoy.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666647/Base_green_and_yellow_xez9ts.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666649/images-removebg-preview_pdunev.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666654/baser12312321_gutff6.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666647/2Base_wwakcj.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666189/baser_rt6tjn.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666189/Base111_yesdlp.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666188/Base_ln9pwj.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666188/2Base_kg07rj.png",
+  ],
+  [ // Neon Green and Neon Yellow
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668119/Base_Ngreen_and_Nyellow_heqkmw.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668120/baser123123211231232131312_t1pl67.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668121/images-removebg-preview1231231231212_hway7n.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668119/33_hxbxii.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668129/Base_Red_and_Orange_msz4h7.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668131/baser1231232112312321313121231_bg7xok.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668132/images-removebg-preview12312312312123123_lsrk90.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668129/332_udmefe.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666760/Base_red_and_blue_uksst4.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666760/Base_red_and_blue_uksst4.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666759/images-removebg-preview1231231_m6xykj.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666755/2_ilitoy.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666647/Base_green_and_yellow_xez9ts.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666649/images-removebg-preview_pdunev.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666654/baser12312321_gutff6.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666647/2Base_wwakcj.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666189/baser_rt6tjn.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666189/Base111_yesdlp.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666188/Base_ln9pwj.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666188/2Base_kg07rj.png",
+  ],
+  [ // Black and White
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668141/Base_Black_and_White_bppqgn.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668143/baser1231232112312321313121232423432_ksxqlw.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668144/images-removebg-preview1231231231212312331232131_v0buda.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668140/3322_puqmsc.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668119/Base_Ngreen_and_Nyellow_heqkmw.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668120/baser123123211231232131312_t1pl67.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668121/images-removebg-preview1231231231212_hway7n.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668119/33_hxbxii.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668129/Base_Red_and_Orange_msz4h7.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668131/baser1231232112312321313121231_bg7xok.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668132/images-removebg-preview12312312312123123_lsrk90.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772668129/332_udmefe.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666760/Base_red_and_blue_uksst4.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666760/Base_red_and_blue_uksst4.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666759/images-removebg-preview1231231_m6xykj.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666755/2_ilitoy.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666647/Base_green_and_yellow_xez9ts.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666649/images-removebg-preview_pdunev.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666654/baser12312321_gutff6.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666647/2Base_wwakcj.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666189/baser_rt6tjn.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666189/Base111_yesdlp.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666188/Base_ln9pwj.png",
+    "https://res.cloudinary.com/dhpahuvxs/image/upload/v1772666188/2Base_kg07rj.png",
+  ]
+];
+let upgradeYourCandyBought = parseFloat(localStorage.getItem("upgradeYourCandyBought")) || 0;
+let enhance2xCPSBought = localStorage.getItem("enhance2xCPSBought") === "true";
+let enhance4xCPSBought = localStorage.getItem("enhance4xCPSBought") === "true";
+let enhance2xCPCBought = localStorage.getItem("enhance2xCPCBought") === "true";
+let enhance5xCPCBought = localStorage.getItem("enhance5xCPCBought") === "true";
+let enhanceAutoClickerBought = localStorage.getItem("enhanceAutoClickerBought") === "true";
+let enhanceAdvancedAutoClickerBought = localStorage.getItem("enhanceAdvancedAutoClickerBought") === "true";
+let enhanceUltimateAutoClickerBought = localStorage.getItem("enhanceUltimateAutoClickerBought") === "true";
+let autoClickerInterval = null;
+let advancedAutoClickerInterval = null;
+let ultimateAutoClickerInterval = null;
+let cheated = false;
+const upgrades = [
+  { id: "upgrade1", name: "Cursor", baseCost: 20, count: 0, effectdescription: "Increase Candy Per Click by 1", effect: () => { CandyPerClick += 1; } },
+  { id: "upgrade2", name: "Confectioner", baseCost: 100, count: 0, effectdescription: "Increase Candy Per Second by 4", effect: () => { CandyPerSecond += 4; } },
+  { id: "upgrade3", name: "Professional Candy Crafter", baseCost: 1000, count: 0, effectdescription: "Increase Candy Per Second by 20", effect: () => { CandyPerSecond += 20; } },
+  { id: "upgrade4", name: "Candy Farm", baseCost: 5000, count: 0, effectdescription: "Increase Candy Per Second by 50", effect: () => { CandyPerSecond += 50; } },
+  { id: "upgrade5", name: "Candy Master", baseCost: 20000, count: 0, effectdescription: "Increase Candy Per Second by 120", effect: () => { CandyPerSecond += 120; } },
+  { id: "upgrade6", name: "Candy Summoner", baseCost: 100000, count: 0, effectdescription: "Increase Candy Per Second by 300", effect: () => { CandyPerSecond += 300; } },
+  { id: "upgrade7", name: "Candy Clonner", baseCost: 500000, count: 0, effectdescription: "Increase Candy Per Second by 800", effect: () => { CandyPerSecond += 800; } },
+  { id: "upgrade8", name: "Candy Portal", baseCost: 2000000, count: 0, effectdescription: "Increase Candy Per Second by 2000", effect: () => { CandyPerSecond += 2000; } },
+  { id: "upgrade9", name: "Candy Universe", baseCost: 10000000, count: 0, effectdescription: "Increase Candy Per Second by 5000", effect: () => { CandyPerSecond += 5000; } },
+  { id: "upgrade10", name: "Dark Matter Candy Summoner", baseCost: 50000000, count: 0, effectdescription: "Increase Candy Per Second by 12000", effect: () => { CandyPerSecond += 12000; } },
+  { id: "upgrade11", name: "Enhanced Dark Matter Candy Cloner", baseCost: 250000000, count: 0, effectdescription: "Increase Candy Per Second by 30000", effect: () => { CandyPerSecond += 30000; } },
+  { id: "upgrade12", name: "Artificial Candy Crafter", baseCost: 1000000000, count: 0, effectdescription: "Increase Candy Per Second by 100000", effect: () => { CandyPerSecond += 100000; } }
+];
+let shopUnlocked = localStorage.getItem("upgradesUnlocked") === "true";
+function getCost(upgrade){ return Math.floor(upgrade.baseCost * Math.pow(1.20, upgrade.count)); }
+const scoreDisplay = document.getElementById("score");
+const CPSDisplay = document.getElementById("CPSDisplay");
+const mainButton = document.getElementById("main-button");
+function getCandyImageSetIndex() {
+  if (Candy <= 10000) return 0;
+  if (Candy <= 100000) return 1;
+  if (Candy <= 1000000) return 2;
+  if (Candy <= 10000000) return 3;
+  if (Candy <= 100000000) return 4;
+  return 5;
+}
+function forcecheated(){
+  document.body.style.backgroundImage = "url('https://res.cloudinary.com/dhpahuvxs/image/upload/v1772777615/Background7_fwie0a.png')";
+  setInterval(() => {
+    document.body.style.backgroundImage = "url('https://res.cloudinary.com/dhpahuvxs/image/upload/v1772777615/Background7_fwie0a.png')";
+  }, 2000);
+}
+function changeCandy(){
+  const setIndex = getCandyImageSetIndex();
+  const images = candyImagesByBG[setIndex] || candyImagesByBG[candyImagesByBG.length-1];
+  const randomIndex = Math.floor(Math.random() * images.length);
+  mainButton.style.backgroundImage = `url('${images[randomIndex]}')`;
+}
+const enhancements = [
+  { id: "enhance2xCPS", cost: 25000000, bought: () => enhance2xCPSBought, effect: () => { CPSMultiplier *= 2; enhance2xCPSBought = true; } },
+  { id: "enhance4xCPS", cost: 100000000, bought: () => enhance4xCPSBought, effect: () => { CPSMultiplier *= 4; enhance4xCPSBought = true; } },
+  { id: "enhance2xCPC", cost: 5000000, bought: () => enhance2xCPCBought, effect: () => { CandyMultiplier *= 2; enhance2xCPCBought = true; } },
+  { id: "enhance5xCPC", cost: 75000000, bought: () => enhance5xCPCBought, effect: () => { CandyMultiplier *= 5; enhance5xCPCBought = true; } },
+  { id: "enhanceAutoClicker", cost: 1000000, bought: () => enhanceAutoClickerBought, effect: () => { enhanceAutoClickerBought = true; startAutoClicker(); } },
+  { id: "enhanceAdvancedAutoClicker", cost: 50000000, bought: () => enhanceAdvancedAutoClickerBought, effect: () => { enhanceAdvancedAutoClickerBought = true; startAdvancedAutoClicker(); } },
+  { id: "enhanceUltimateAutoClicker", cost: 250000000, bought: () => enhanceUltimateAutoClickerBought, effect: () => { enhanceUltimateAutoClickerBought = true; startUltimateAutoClicker(); } }
+];
+function dynamicBG() {
+  if (cheated === false){
+      if (Candy <= 10000) {
+    document.body.style.backgroundImage = "url('https://res.cloudinary.com/dhpahuvxs/image/upload/v1772660770/Background_hslcrq.png')"; // Pink and Blue
+  } 
+  else if (Candy <= 100000) {
+    document.body.style.backgroundImage = "url('https://res.cloudinary.com/dhpahuvxs/image/upload/v1772661360/Background2_r8nlln.png')"; // Green and Yellow
+  } 
+  else if (Candy <= 1000000) { // 1 mil
+    document.body.style.backgroundImage = "url('https://res.cloudinary.com/dhpahuvxs/image/upload/v1772661770/Background3_w0w1qk.png')"; // Red and Blue
+  } 
+  else if (Candy <= 10000000) {
+    document.body.style.backgroundImage = "url('https://res.cloudinary.com/dhpahuvxs/image/upload/v1772661846/Background4_qxkpfp.png')"; // Red and Orange
+  } 
+  else if (Candy <= 100000000) { // 100 mil
+    document.body.style.backgroundImage = "url('https://res.cloudinary.com/dhpahuvxs/image/upload/v1772661935/Background5_emiwxr.png')"; // Neon Green and Neon Yellow
+  }
+  else {
+    // New background for >100 million candies
+    document.body.style.backgroundImage = "url('https://res.cloudinary.com/dhpahuvxs/image/upload/v1772663679/Background6_npk7bi.png')"; // Black and White
+  }
+  }
+}
+function getAutoClickerCPS() {
+  let cps = 0;
+  if (enhanceAutoClickerBought) cps += (CandyPerClick * CandyMultiplier * 2);
+  if (enhanceAdvancedAutoClickerBought) cps += (CandyPerClick * CandyMultiplier * 20);
+  if (enhanceUltimateAutoClickerBought) cps += (CandyPerClick * CandyMultiplier * 200);
+  return cps;
+}
+function runCommand() {
+  localStorage.setItem("cheatedFlag", "true");
+  const input = document.getElementById("consoleInput").value;
+  try {
+    eval(input);
+    cheated = true;
+    forcecheater();
+  } catch (error) {
+  }
+}
+function updateUI(){
+  scoreDisplay.textContent = "Candies: " + Math.floor(Candy).toLocaleString();
+  const totalCPS = CandyPerSecond * CPSMultiplier + getAutoClickerCPS();
+  CPSDisplay.textContent = "Candy Per Second: " + totalCPS.toLocaleString();
+  upgrades.forEach(u=>{
+    const btn=document.getElementById(u.id);
+    const cost=getCost(u);
+      btn.innerHTML = `${u.count} ${u.name} (Cost: ${cost.toLocaleString()})<br><span style='font-size:12px;'>${u.effectdescription}</span>`;
+    btn.disabled=Candy<cost;
+  });
+
+  const shopBtn=document.getElementById("shop");
+  if(shopUnlocked){ shopBtn.style.display="none"; document.getElementById("nav-menu").style.display="block"; } 
+  else { shopBtn.style.display="block"; document.getElementById("nav-menu").style.display="none"; }
+
+  const upgradeCandyBtn = document.getElementById("upgrade13");
+  let upgradeCandyCount = upgradeYourCandyBought;
+  let upgradeCandyCost = Math.floor(100000 * Math.pow(3, upgradeCandyCount));
+  upgradeCandyBtn.textContent = `Upgrade Your Candy x${upgradeCandyCount} (Cost: ${upgradeCandyCost.toLocaleString()})`;
+  upgradeCandyBtn.disabled = Candy < upgradeCandyCost;
+  enhancements.forEach(e=>{
+    if(e.id === "upgrade13") return;
+    const btn=document.getElementById(e.id);
+    if(e.bought()){ btn.textContent=btn.textContent.split("(")[0]+"(Purchased)"; btn.disabled=true; } 
+    else { btn.disabled=Candy<e.cost; }
+  });
+}
+function saveProgress(){
+  if (cheated) return;
+  localStorage.setItem("Candy",Candy);
+  localStorage.setItem("CandyPerClick",CandyPerClick);
+  localStorage.setItem("CandyPerSecond",CandyPerSecond);
+  localStorage.setItem("CandyMultiplier",CandyMultiplier);
+  localStorage.setItem("CPSMultiplier",CPSMultiplier);
+  localStorage.setItem("soundEnabled",soundEnabled);
+  upgrades.forEach(u=>localStorage.setItem(u.id+"_count",u.count));
+  localStorage.setItem("upgradesUnlocked",shopUnlocked?"true":"false");
+  localStorage.setItem("upgradeYourCandyBought",upgradeYourCandyBought);
+  localStorage.setItem("enhance2xCPSBought",enhance2xCPSBought?"true":"false");
+  localStorage.setItem("enhance4xCPSBought",enhance4xCPSBought?"true":"false");
+  localStorage.setItem("enhance2xCPCBought",enhance2xCPCBought?"true":"false");
+  localStorage.setItem("enhance5xCPCBought",enhance5xCPCBought?"true":"false");
+  localStorage.setItem("enhanceAutoClickerBought",enhanceAutoClickerBought?"true":"false");
+  localStorage.setItem("enhanceAdvancedAutoClickerBought",enhanceAdvancedAutoClickerBought?"true":"false");
+  localStorage.setItem("enhanceUltimateAutoClickerBought",enhanceUltimateAutoClickerBought?"true":"false");
+}
+mainButton.addEventListener("click",()=>{
+  Candy+=CandyPerClick*CandyMultiplier;
+  playClickSound();
+  dynamicBG();
+  changeCandy();
+  updateUI();
+  creategoldencandy();
+  createFloatingText(CandyPerClick*CandyMultiplier);
+  saveProgress();
+});
+upgrades.forEach(u=>{
+  const btn=document.getElementById(u.id);
+  btn.addEventListener("click",()=>{
+    const cost=getCost(u);
+    if(Candy>=cost){ Candy-=cost; u.count++; u.effect(); updateUI(); saveProgress(); upgradebuttonsound(); }
+  });
+});
+function toggleSound(){
+  soundEnabled = !soundEnabled;
+  localStorage.setItem("soundEnabled", soundEnabled);
+}
+function playClickSound(){
+  if (soundEnabled) {
+    buttonsound.currentTime = 0;
+    buttonsound.volume = 0.1;
+    buttonsound.play().catch(e => console.log("Audio play failed:", e));
+  }
+}
+function upgradebuttonsound(){
+  if (soundEnabled) {
+    clickSound.currentTime = 0;
+    clickSound.play().catch(e => console.log("Audio play failed:", e));
+  }
+}
+
+document.getElementById("shop").addEventListener("click",()=>{
+  if(!shopUnlocked && Candy>=1000000){ Candy-=1000000; shopUnlocked=true; document.getElementById("shop").style.display="none"; document.getElementById("nav-menu").style.display="block"; showTab('enhancement-container'); saveProgress(); updateUI(); }
+});
+document.getElementById("upgrade13").addEventListener("click",()=>{
+  let upgradeCandyCount = upgradeYourCandyBought;
+  let upgradeCandyCost = Math.floor(100000 * Math.pow(3, upgradeCandyCount));
+  if(Candy >= upgradeCandyCost){
+    Candy -= upgradeCandyCost;
+    upgradeYourCandyBought++;
+    CPSMultiplier *= 1.25;
+    updateUI();
+    saveProgress();
+  }
+});
+enhancements.forEach(e=>{
+  if(e.id === "upgrade13") return;
+  const btn=document.getElementById(e.id);
+  btn.addEventListener("click",()=>{ if(!e.bought() && Candy>=e.cost){ Candy-=e.cost; e.effect(); updateUI(); saveProgress(); upgradebuttonsound(); } });
+});
+function startAutoClicker() {
+  if (autoClickerInterval) clearInterval(autoClickerInterval);
+  autoClickerInterval = setInterval(() => {
+    Candy += CandyPerClick * CandyMultiplier;
+    createFloatingText2(CandyPerClick * CandyMultiplier);
+    changeCandy();
+    dynamicBG();
+    updateUI();
+  }, 500);
+}
+function startAdvancedAutoClicker() {
+  if (advancedAutoClickerInterval) clearInterval(advancedAutoClickerInterval);
+  advancedAutoClickerInterval = setInterval(() => {
+    Candy += CandyPerClick * CandyMultiplier * 5;
+    createFloatingText2(CandyPerClick * CandyMultiplier * 5);
+    changeCandy();
+    dynamicBG();
+    updateUI();
+  }, 250);
+}
+function startUltimateAutoClicker() {
+  if (ultimateAutoClickerInterval) clearInterval(ultimateAutoClickerInterval);
+  ultimateAutoClickerInterval = setInterval(() => {
+    Candy += CandyPerClick * CandyMultiplier * 25;
+    createFloatingText2(CandyPerClick * CandyMultiplier * 25);
+    changeCandy();
+    dynamicBG();
+    updateUI();
+  }, 125);
+}
+setInterval(()=>{ Candy+=CandyPerSecond*CPSMultiplier/10; updateUI(); },100);
+setInterval(saveProgress,3000);
+setInterval(dynamicBG,5000);
+function showTab(tabId){
+  document.getElementById('upgrade-container').style.display='none';
+  document.getElementById('enhancement-container').style.display='none';
+  document.getElementById(tabId).style.display='block';
+  const enhancementBtn = document.querySelector("#nav-menu button[onclick*='enhancement-container']");
+  const upgradeBtn = document.querySelector("#nav-menu button[onclick*='upgrade-container']");
+  if(tabId === 'enhancement-container') {
+    enhancementBtn.style.display = 'none';
+    upgradeBtn.style.display = 'inline-block';
+  } else if(tabId === 'upgrade-container') {
+    upgradeBtn.style.display = 'none';
+    enhancementBtn.style.display = 'inline-block';
+  }
+  }
+let min1 = 1000;
+let max1 = 2000;
+let min = 1000;
+let max = 10000;
+function creategoldencandy(){
+  if (Math.random() >= 1/100) return;
+    const goldencandy=document.createElement("div");
+    goldencandy.style.position="absolute";
+    goldencandy.style.left=Math.random()*(window.innerWidth-500)+"px";
+    goldencandy.style.top=Math.random()*(window.innerHeight-250)+"px";
+    goldencandy.style.width="500px";
+    goldencandy.style.height="250px";
+    goldencandy.animate([
+      { transform: 'translateY(0px)' },
+      { rotate: '20deg' },
+      { transform: 'translateY(-20px)' },
+      { rotate: '-20deg' },
+      { transform: 'translateY(0px)' },
+
+    ], {
+      duration: 2000,
+      iterations: Infinity
+    });
+    goldencandy.style.backgroundImage="url('https://res.cloudinary.com/dhpahuvxs/image/upload/v1772782113/99014489-candy-sweets-on-white-background-vector-illustration-cartoon-style-removebg-preview_z5xlm0.png')";
+    goldencandy.style.backgroundSize="cover";
+    goldencandy.style.borderRadius="50%";
+    goldencandy.style.cursor="pointer";
+    document.body.appendChild(goldencandy);
+    goldencandy.addEventListener("click",()=>{
+      Candy += (Math.round(Math.random() * (max - min) + min * CandyMultiplier));
+      playClickSound();
+      createFloatingText(Math.round(Math.random() * (max - min) + min * CandyMultiplier));
+      updateUI();
+      saveProgress();
+      goldencandy.remove();
+    });
+    setTimeout(()=>{ goldencandy.remove(); },10000);
+  }
+
+let floatingTextCount = 0;
+const maxFloatingTexts = 20;
+function createFloatingText(amount){
+  if (floatingTextCount >= maxFloatingTexts) return;
+  floatingTextCount++;
+  const text=document.createElement("div");
+  text.textContent="+"+amount;
+  text.style.position="absolute";
+  text.style.left=Math.random()*window.innerWidth+"px";
+  text.style.top="300px";
+  text.style.color="white";
+  text.style.fontSize="24px";
+  text.style.fontWeight="bold";
+  text.style.pointerEvents="none";
+  text.style.transition="all 1s ease-out";
+  document.body.appendChild(text);
+  setTimeout(()=>{ text.style.top="200px"; text.style.opacity="0"; },10);
+  setTimeout(()=>{ text.remove(); floatingTextCount--; },1000);
+}
+function createFloatingText2(amount){
+  if (floatingTextCount >= maxFloatingTexts) return;
+  floatingTextCount++;
+  const text=document.createElement("div");
+  text.textContent="+"+amount;
+  text.style.position="absolute";
+  text.style.left=Math.random()*window.innerWidth+"px";
+  text.style.top="300px";
+  text.style.color="gold";
+  text.style.fontSize="12px";
+  text.style.fontWeight="bold";
+  text.style.pointerEvents="none";
+  text.style.transition="all 1s ease-out";
+  document.body.appendChild(text);
+  setTimeout(()=>{ text.style.top="200px"; text.style.opacity="0"; },10);
+  setTimeout(()=>{ text.remove(); floatingTextCount--; },1000);
+}
+upgrades.forEach(u=>{ u.count=parseInt(localStorage.getItem(u.id+"_count"))||0; });
+upgradeYourCandyBought = parseInt(localStorage.getItem("upgradeYourCandyBought")) || 0;
+if (enhanceAutoClickerBought) startAutoClicker();
+if (enhanceAdvancedAutoClickerBought) startAdvancedAutoClicker();
+if (enhanceUltimateAutoClickerBought) startUltimateAutoClicker();
+updateUI();
+</script>
+
+</body>
+</html>
